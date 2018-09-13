@@ -18,18 +18,27 @@
 
 @implementation YQAssetOperator
 
++ (nonnull instancetype)defaultOperator {
+    return [[YQAssetOperator alloc] init];
+}
+
+- (instancetype)init {
+    if ( self = [super init] ) {
+        self.folderName = @"Love";
+    }
+    return self;
+}
+
 - (instancetype)initWithFolderName:(NSString *)folderName {
     self = [self init];
     if (self) {
-        self.plistName = @"Asset";
+        self.plistName = @"LovePlist";
         self.folderName = folderName;
     }
     return self;
 }
 
-- (void)saveImagePath:(NSString *)imagePath{
-    NSURL *url = [NSURL fileURLWithPath:imagePath];
-    
+- (void)saveImagePath:(nullable NSString *)imagePath orImage:(nullable UIImage *)image completionHandler:(nullable void(^)(BOOL success, NSError *__nullable error))completionHandler {
     //标识保存到系统相册中的标识
     __block NSString *localIdentifier;
     
@@ -42,7 +51,14 @@
         if ([assetCollection.localizedTitle isEqualToString:_folderName])  {
             [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
                 //请求创建一个Asset
-                PHAssetChangeRequest *assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImageAtFileURL:url];
+                //请求创建一个Asset
+                PHAssetChangeRequest *assetRequest;
+                if ( imagePath && imagePath.length ) {
+                    NSURL *url = [NSURL fileURLWithPath:imagePath];
+                    assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImageAtFileURL:url];
+                } else {
+                    assetRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+                }
                 //请求编辑相册
                 PHAssetCollectionChangeRequest *collectonRequest = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:assetCollection];
                 //为Asset创建一个占位符，放到相册编辑请求中
@@ -52,6 +68,11 @@
                 
                 localIdentifier = placeHolder.localIdentifier;
             } completionHandler:^(BOOL success, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if ( completionHandler ) {
+                        completionHandler(success, error);
+                    }
+                });
                 if (success) {
                     NSLog(@"保存图片成功!");
                     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self readFromPlist]];
@@ -65,7 +86,7 @@
     }];
 }
 
-- (void)saveVideoPath:(NSString *)videoPath {
+- (void)saveVideoPath:(NSString *)videoPath completionHandler:(nullable void(^)(BOOL success, NSError *__nullable error))completionHandler {
     NSURL *url = [NSURL fileURLWithPath:videoPath];
     
     //标识保存到系统相册中的标识
@@ -90,6 +111,11 @@
                 
                 localIdentifier = placeHolder.localIdentifier;
             } completionHandler:^(BOOL success, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if ( completionHandler ) {
+                        completionHandler(success, error);
+                    }
+                });
                 if (success) {
                     NSLog(@"保存视频成功!");
                     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[self readFromPlist]];
@@ -182,7 +208,7 @@
     if (!_plistName) {
         _plistName = plistName;
         
-        //创建plist文件，记录path和localIdentifier的对应关系
+        //创建plist文件，记录path和localIdentifier的对应关系, 方便删除已经保存过的图片
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
         NSString *path = [paths objectAtIndex:0];
         NSString *filePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", plistName]];

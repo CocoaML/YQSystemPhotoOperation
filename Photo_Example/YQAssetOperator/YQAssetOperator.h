@@ -7,8 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface YQAssetOperator : NSObject
+
+/**
+ *  初始化方法
+ *
+ *  @param 一般一个工程只有一个 操作的目录文件
+ *
+ *  @return 操作对象
+ */
++ (nonnull instancetype)defaultOperator;
 
 /**
  *  初始化方法
@@ -23,17 +33,15 @@
  *  保存图片到系统相册
  *
  *  @param imagePath  保存的图片路径
- *  @param folderName 目的文件的路径
  */
-- (void)saveImagePath:(NSString *)imagePath;
-
+- (void)saveImagePath:(nullable NSString *)imagePath orImage:(nullable UIImage *)image completionHandler:(nullable void(^)(BOOL success, NSError *__nullable error))completionHandler;
 /**
  *  保存视频到系统相册
  *
  *  @param videoPath  保存的视频路径
  *  @param folderName 目的文件的路径
  */
-- (void)saveVideoPath:(NSString *)videoPath;
+- (void)saveVideoPath:(nonnull NSString *)videoPath completionHandler:(nullable void(^)(BOOL success, NSError *__nullable error))completionHandler;
 
 /**
  *  删除系统相册中的文件

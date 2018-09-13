@@ -15,9 +15,9 @@
 		1918E7E71CE035F900AD9E4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1918E7E51CE035F900AD9E4B /* LaunchScreen.storyboard */; };
 		1918E7F21CE035F900AD9E4B /* Photo_ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1918E7F11CE035F900AD9E4B /* Photo_ExampleTests.m */; };
 		1918E7FD1CE035F900AD9E4B /* Photo_ExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1918E7FC1CE035F900AD9E4B /* Photo_ExampleUITests.m */; };
-		1918E80B1CE0677700AD9E4B /* scanner.png in Resources */ = {isa = PBXBuildFile; fileRef = 1918E80A1CE0677700AD9E4B /* scanner.png */; };
 		1918E8111CE07C0E00AD9E4B /* YQAssetOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1918E8101CE07C0E00AD9E4B /* YQAssetOperator.m */; };
 		3E9130091D5F5C4600AAEE1A /* 0425_103546.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3E9130081D5F5C4600AAEE1A /* 0425_103546.mp4 */; };
+		6D684123214A2D8000FF15A6 /* tip_scanner.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 6D684122214A2D7F00FF15A6 /* tip_scanner.JPG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,10 +54,10 @@
 		1918E7F81CE035F900AD9E4B /* Photo_ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Photo_ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1918E7FC1CE035F900AD9E4B /* Photo_ExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Photo_ExampleUITests.m; sourceTree = "<group>"; };
 		1918E7FE1CE035F900AD9E4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1918E80A1CE0677700AD9E4B /* scanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scanner.png; sourceTree = "<group>"; };
 		1918E80F1CE07C0E00AD9E4B /* YQAssetOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQAssetOperator.h; sourceTree = "<group>"; };
 		1918E8101CE07C0E00AD9E4B /* YQAssetOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQAssetOperator.m; sourceTree = "<group>"; };
 		3E9130081D5F5C4600AAEE1A /* 0425_103546.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 0425_103546.mp4; sourceTree = "<group>"; };
+		6D684122214A2D7F00FF15A6 /* tip_scanner.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tip_scanner.JPG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				1918E80E1CE07BF700AD9E4B /* YQAssetOperator */,
-				1918E80A1CE0677700AD9E4B /* scanner.png */,
+				6D684122214A2D7F00FF15A6 /* tip_scanner.JPG */,
 				1918E7DA1CE035F900AD9E4B /* AppDelegate.h */,
 				1918E7DB1CE035F900AD9E4B /* AppDelegate.m */,
 				1918E7DD1CE035F900AD9E4B /* ViewController.h */,
@@ -263,7 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1918E7E71CE035F900AD9E4B /* LaunchScreen.storyboard in Resources */,
-				1918E80B1CE0677700AD9E4B /* scanner.png in Resources */,
+				6D684123214A2D8000FF15A6 /* tip_scanner.JPG in Resources */,
 				3E9130091D5F5C4600AAEE1A /* 0425_103546.mp4 in Resources */,
 				1918E7E41CE035F900AD9E4B /* Assets.xcassets in Resources */,
 				1918E7E21CE035F900AD9E4B /* Main.storyboard in Resources */,
